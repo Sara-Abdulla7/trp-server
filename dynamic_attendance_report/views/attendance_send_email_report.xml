@@ -1,0 +1,38 @@
+<odoo>
+	<data>
+        <record id="attendance_email_tree_view" model="ir.ui.view">
+            <field name="name">attendance.email.tree.view</field>
+            <field name="model">attendance.email</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom" string="Attendance Email tree">
+                    <field name="employee_name" />
+                    <field name="work_email"/>
+                    <field name="email_type" required="True"/>
+                </tree>
+            </field>
+        </record>
+
+
+
+        <record id="attendance_email_action" model="ir.actions.act_window">
+            <field name="name">Attendanc Email Report</field>
+            <field name="res_model">attendance.email</field>
+            <field name="view_mode">tree</field>
+          
+        </record>
+
+
+<!-- 
+
+    <menuitem id="hr_attendance.menu_hr_attendance_settings" name="Configuration" parent="menu_hr_attendance_root"
+        sequence="99" action="action_hr_attendance_settings" groups="hr_attendance.group_hr_attendance_manager"/>
+
+ -->
+<menuitem id="attendance_email_settings" name="Settings" sequence="1" action="hr_attendance.action_hr_attendance_settings" parent="hr_attendance.menu_hr_attendance_settings"
+        />
+
+        <menuitem id="attendance_email_settings_menu_item" name="Attendanc Email " sequence="10" action="attendance_email_action" parent="hr_attendance.menu_hr_attendance_settings"
+        />
+
+    </data>
+</odoo>

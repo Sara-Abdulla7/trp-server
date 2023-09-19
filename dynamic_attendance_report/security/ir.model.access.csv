@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_create_wizard,access.create.wizard,model_create_wizard,base.group_user,1,1,1,1
+access_attendance_email,access.attendance.email,model_attendance_email,base.group_user,1,1,1,1

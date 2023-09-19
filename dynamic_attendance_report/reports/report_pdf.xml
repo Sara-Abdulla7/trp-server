@@ -1,0 +1,116 @@
+<odoo>
+<data>
+ <template id="report_details_pdf">
+        <t t-call="web.html_container">
+            <div class="header">
+                        <div class="row">
+                            <div style='border:bottom border'>
+                                <center>
+                                    <img src="/dynamic_attendance_report/static/logo/kascco_header.png" width="1000" height="150"/>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="article">
+
+                <h3 class="text-center">Employee Attendance Report</h3>
+                <h4 class="text-center">
+                    <strong>From</strong>:
+                    <t t-esc="start_date"/>
+                    <strong>To</strong>:
+                    <t t-esc="end_date"/> </h4>
+            <!-- </div>
+            <div class="article"> -->
+                <table class="table table-condensed table-bordered" style="width: 100%">
+                        <thead>
+                        <th class="text-center" style="width: 5%">N</th>
+                        <th class="text-center" style="width: 15%">Employee</th>
+                        <th class="text-center" style="width: 15%">Check In</th>
+                        <th class="text-center" style="width: 15%">Check Out</th>
+                        <th class="text-center" style="width: 10%"># Check In/Out </th>
+                        <th class="text-center" style="width: 5%">Average Hour per Day</th>
+                        <th class="text-center" style="width: 10%">Work Hours</th>
+                       <th class="text-center" style="width: 5%">Lost Time</th>
+                    </thead>
+                    <tbody>
+                        <t t-set='num' t-value='0'/>
+            <t t-foreach="docs" t-as="line">
+            <t t-set='num' t-value='num+1'/>
+                        <tr t-att-class="'bg-200 font-weight-bold o_line_section'">
+
+                            <td class="text-center">  
+                                <t t-esc="num"/>
+                            </td>
+
+                            <td class="text-center">  
+                                <t t-esc="line['employee_id']"/>
+                            </td>
+                            <td class="text-center">
+                                <t t-esc="line['check_in']"/>
+                            </td>
+                            <td class="text-center">
+                                <t t-esc="line['check_out']"/>
+                            </td>
+                            <td class="text-center">
+                                <t t-esc="line['employee_count']"/>
+                            </td>
+                            <td class="text-center">
+                                <t t-esc="line['hours_per_day']"/>
+                            </td>
+                            <td class="text-center">
+                              <t t-esc="str(int(line['worked_hours'])) + ':' + str(int(round((line['worked_hours'] - int(line['worked_hours'])) * 60, 2)))"/>
+                             </td>
+                        
+                            <td class="text-center">
+                              <t t-esc="line['test_col']" t-options="{'widget':'float_time'}"/>
+
+                            </td>
+
+                            </tr>
+                        </t>
+                        
+                    </tbody>
+                </table>
+                <table class="o_list_view table table-condensed table-striped">
+            <thead>
+                <tr>
+                    <th>Total Work Hours</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+              <td class="text-center" t-esc="round(lst,2)" />
+
+                </tr>
+            </tbody> 
+        </table>
+                   
+            </div>
+            <div class="footer">
+                 <div class="row">
+                    <div style='border:bottom border'>
+                        <center>
+                            <img src="/dynamic_attendance_report/static/logo/kascco_footer.png" width="1000" height="150"/>
+                        </center>
+                    </div>
+                </div>
+                <div class="row text-center" style="border-top: 1px solid black;">
+                    <div class="col col-3 offset-9 text-right">
+                        <ul class="list-inline mt-2">
+                            <li class="list-inline-item">Page:</li>
+                            <li class="list-inline-item">
+                                <span class="page"/>
+                            </li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item">
+                                <span class="topage"/>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </t>
+    </template> 
+  </data>
+</odoo>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_dynamic_attendance_report_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.dynamic.attendance.report</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="15"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="dynamic attendance report Config" string="Attendance Report Settings"
+                         data-key="dynamic_attendance_report">
+                        <h2>Attendance Report Settings</h2>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Start Date</span>
+                                    <div class="text-muted">Please Enter Start Date</div>
+                                    <div class="o_row">
+                                        <div class="mt8">
+                                            <field name="start_datee" placeholder="Start Date "/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">End Date</span>
+                                    <div class="text-muted">Please Enter End Date</div>
+                                    <div class="o_row">
+                                        <div class="mt8">
+                                            <field name="end_datee" placeholder="End Date"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt16 o_settings_container">
+                            <div class="col-12 col-lg-6 o_setting_box">
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">Today Datee</span>
+                                    <div class="text-muted">Please Enter Today Date Date</div>
+                                    <div class="o_row">
+                                        <div class="mt8">
+                                            <field name="today_datee" placeholder="Today Date " widget='boolean_toggle'/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div></div>
+                    </div>
+
+                </xpath>
+            </field>
+        </record>
+        <record id="res_config_settings_view_dynamic_attendance_report_action" model="ir.actions.act_window">
+            <field name="name"> Attendance Report Settings</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_id" ref="res_config_settings_view_dynamic_attendance_report_form"/>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'dynamic_attendance_report'}</field>
+        </record>
+
+
+    </data>
+</odoo>
